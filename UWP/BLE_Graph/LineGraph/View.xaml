@@ -1,0 +1,124 @@
+﻿<UserControl
+    x:Class="LineGraph.View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.UWP"
+    xmlns:vms="using:LineGraph" xmlns:local="using:BLE_Graph"
+    mc:Ignorable="d">
+	<UserControl.Resources>
+        <DataTemplate x:Key="MeasureListViewTemplate" x:DataType="local:MeasurementCharacteristic">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="5" Orientation="Vertical">
+                    <TextBlock Margin="10,0,0,0" Foreground="{Binding ColorBrush}" TextWrapping="WrapWholeWords" TextAlignment="Center">
+                        <Run Text="{x:Bind Name, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock Margin="10,0,0,0" Foreground="{Binding ColorBrush}" TextWrapping="WrapWholeWords" TextAlignment="Center">
+                        <Run Text="{x:Bind LatestValueString, Mode=OneWay}" FontWeight="Bold" /> <Run Text="{x:Bind Unit, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ConfigListViewTemplate" x:DataType="local:ConfigCharacteristic">
+            <Grid Margin="0,10,10,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="0" Orientation="Vertical">
+                    <TextBlock Margin="5,0,0,0" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" TextWrapping="WrapWholeWords" TextAlignment="Left">
+                        <Run Text="{x:Bind Name, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="Tbx_Value" Margin="5,0,0,0" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" Text="{Binding ValueString, Mode=OneWay}" Tag="{Binding ObjIndex}" KeyDown="Tbx_Value_KeyDown" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+						<TextBlock Margin="10,0,0,0" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" TextWrapping="WrapWholeWords" TextAlignment="Left" VerticalAlignment="Center">
+                            <Run Text="{x:Bind Unit, Mode=OneWay}" FontWeight="Bold"/>
+						</TextBlock>
+						<Button x:Name="Btn_Apply" Margin="10,0,0,0" FontFamily="Segoe MDL2 Assets" Content="&#xE73E;" Foreground="Green" FontWeight="Bold" Visibility="Collapsed" Click="Btn_Apply_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+	<Grid >
+		<SplitView x:Name="Splitter" IsPaneOpen="True" Grid.Row="1" DisplayMode="Inline" PanePlacement="Right" OpenPaneLength="200">
+			<SplitView.Pane>
+				<RelativePanel Margin="0,0,0,0">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"></RowDefinition>
+							<RowDefinition Height="auto"></RowDefinition>
+							<RowDefinition Height="auto"></RowDefinition>
+						</Grid.RowDefinitions>
+						<ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto" Grid.Row="0">
+							<StackPanel Orientation="Vertical">
+								<ListView x:Name="ConfigListView" 
+                                  ItemTemplate="{StaticResource ConfigListViewTemplate}"
+                                  ItemsSource="{x:Bind ViewModel.ConfigCharacteristics, Mode=OneWay}"
+                                  IsItemClickEnabled="False"
+							      SelectionMode="None">
+									<ListView.ItemsPanel>
+										<ItemsPanelTemplate>
+											<StackPanel Background="Transparent" Orientation="Vertical" />
+										</ItemsPanelTemplate>
+									</ListView.ItemsPanel>
+								</ListView>
+							</StackPanel>
+						</ScrollViewer>
+						<!--Experimental feature used to calibrate the current sensor to a reference value. Cannot be undone - use with caution! -->
+						<StackPanel x:Name="StackPanelCalibSensor" Visibility="Collapsed" Grid.Row="1">
+							<CheckBox x:Name="CalibrationCheckBox" Content="Enable Calibration"  Margin="5,0,0,0" Click="CalibrationCheckBox_Click"></CheckBox>
+							<ContentControl x:Name="CalibrationPanel" Visibility="Collapsed"  Margin="15,0,0,0">
+								<StackPanel Margin="5,0,0,10" BorderBrush="Gray" BorderThickness="1" Padding="5">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Margin="0,10,0,0">Reference Value</TextBlock>
+										<TextBox x:Name="CalibrationValueTextBox" Width="100" Margin="5,5,0,0"></TextBox>
+									</StackPanel>
+									<Button x:Name="CalibrationStartButton"  Content="Start Calibration" Click="CalibrationStartButton_Click" Margin="0,5,0,0"></Button>
+									<Button x:Name="CalibrationResetButton"  Content="Reset Calibration" Margin="0,5,0,0" Click="CalibrationResetButton_Click"/>
+								</StackPanel>
+							</ContentControl>
+						</StackPanel>
+					</Grid>
+				</RelativePanel>
+			</SplitView.Pane>
+
+			<RelativePanel>
+				<Grid RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="75"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollMode="Disabled"  VerticalScrollBarVisibility="Disabled">
+						<StackPanel  Grid.Row="0" Orientation="Horizontal">
+							<ListView x:Name="MeasureListView" 
+                              ItemTemplate="{StaticResource MeasureListViewTemplate}"
+                              ItemsSource="{x:Bind ViewModel.MeasurementCharacteristics, Mode=OneWay}"
+                              IsItemClickEnabled="True"
+                              ItemClick="MeasureListView_ItemClick">
+								<ListView.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Background="Transparent" Orientation="Horizontal" />
+									</ItemsPanelTemplate>
+								</ListView.ItemsPanel>
+							</ListView>
+						</StackPanel>
+					</ScrollViewer>
+
+					<lvc:CartesianChart x:Name="MainChart" Grid.Row="1" 
+                                        Series="{Binding Series}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes}" SyncContext="{Binding Sync}">
+					</lvc:CartesianChart>
+				</Grid>
+			</RelativePanel>
+		</SplitView>
+	</Grid>
+
+</UserControl>
