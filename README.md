@@ -3,12 +3,6 @@
 *** that would make this better, please fork the repo and create a pull request
 *** or simply open an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
-
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** MechResato, DeflectionAnalyzer, twitter_handle, email, project_title, project_description
 -->
 
 
@@ -61,6 +55,7 @@
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
+    <li><a href="#description">Description</a></li>
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -102,12 +97,15 @@ On the left you can filter and click one of the Sensor Boards to establish a con
 
 Project Link: [https://github.com/Infineon/AQM-Windows-App](https://github.com/Infineon/AQM-Windows-App)
 
+by Rene S. - MCI Emerging Applications Lab - 6020 Innsbruck 
+
 
 
 <!-- ACKNOWLEDGEMENTS & RESOURCES -->
 ## Acknowledgements and Resources
 
 * [Infineon - AQM-Sensorhub](https://github.com/Infineon/AQM-Sensorhub)
+* [Infineon - AQM-Android-App](https://github.com/Infineon/AQM-Android-App)
 * [Microsoft - Bluetooth Low Energy sample](https://docs.microsoft.com/en-us/samples/microsoft/windows-universal-samples/bluetoothle/)
 * [othneildrew - Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
