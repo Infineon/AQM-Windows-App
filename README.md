@@ -81,7 +81,7 @@ Note: This app can only be run with Windows 10 1809 or newer. This is because so
 <!-- USAGE -->
 ## Usage
 
-On the left you can filter and click one of the Sensor Boards to establish a connection to it. After this you can click on one of the values above to get the graph on this value or use the boxes on the right to configure it. The Menu and Configuration buttons on top left and right corner can be used to hide the according panels.
+On the left you can filter and click on one of the Sensor Boards to establish a connection to it. After that you can click on one of the values above to get the graph on this value or use the boxes on the right to configure it. The menu and configuration buttons on top left and right corner can be used to hide the according panels.
 
 <a href="https://github.com/Infineon/AQM-Windows-App">
     <img src="images/App.png" alt="Application example" >
@@ -97,7 +97,7 @@ On the left you can filter and click one of the Sensor Boards to establish a con
 
 Project Link: [https://github.com/Infineon/AQM-Windows-App](https://github.com/Infineon/AQM-Windows-App)
 
-by Rene S. - MCI Emerging Applications Lab - 6020 Innsbruck 
+by Rene Santeler - MCI Emerging Applications Lab - 6020 Innsbruck, in cooperation with Infineon
 
 
 
