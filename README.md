@@ -107,6 +107,7 @@ by Rene Santeler - MCI Emerging Applications Lab - 6020 Innsbruck, in cooperatio
 * [Infineon - AQM-Sensorhub](https://github.com/Infineon/AQM-Sensorhub)
 * [Infineon - AQM-Android-App](https://github.com/Infineon/AQM-Android-App)
 * [Microsoft - Bluetooth Low Energy sample](https://docs.microsoft.com/en-us/samples/microsoft/windows-universal-samples/bluetoothle/)
+* [beto-rodriguez - LiveCharts2](https://github.com/beto-rodriguez/LiveCharts2)
 * [othneildrew - Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 
