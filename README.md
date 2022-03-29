@@ -116,13 +116,13 @@ by Rene Santeler - MCI Emerging Applications Lab - 6020 Innsbruck, in cooperatio
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/MechResato/DeflectionAnalyzer.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Infineon/AQM-Windows-App.svg?style=for-the-badge
 [contributors-url]: https://github.com/Infineon/AQM-Windows-App/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MechResato/DeflectionAnalyzer.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Infineon/AQM-Windows-App.svg?style=for-the-badge
 [forks-url]: https://github.com/Infineon/AQM-Windows-App/network/members
-[stars-shield]: https://img.shields.io/github/stars/MechResato/DeflectionAnalyzer.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Infineon/AQM-Windows-App.svg?style=for-the-badge
 [stars-url]: https://github.com/Infineon/AQM-Windows-App/stargazers
-[issues-shield]: https://img.shields.io/github/issues/MechResato/DeflectionAnalyzer.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Infineon/AQM-Windows-App.svg?style=for-the-badge
 [issues-url]: https://github.com/Infineon/AQM-Windows-App/issues
-<!-- [license-shield]: https://img.shields.io/github/license/MechResato/DeflectionAnalyzer.svg?style=for-the-badge -->
+<!-- [license-shield]: https://img.shields.io/github/license/Infineon/AQM-Windows-App.svg?style=for-the-badge -->
 <!-- [license-url]: https://github.com/Infineon/AQM-Windows-App/blob/master/LICENSE.txt -->
