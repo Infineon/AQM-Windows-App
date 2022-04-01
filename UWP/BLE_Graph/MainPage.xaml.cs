@@ -590,7 +590,7 @@ namespace BLE_Graph
 			StopBleDeviceWatcher();
 
 			// Ask user if he really wants to do this
-			MessageDialog dialog = new MessageDialog("This will start a calibration cycle on every currently shown Bluetooth device and can not be undone. Are You sure?",  "Start Calibration");
+			MessageDialog dialog = new MessageDialog("This will start a calibration cycle on every currently shown Bluetooth device and CAN NOT BE UNDONE! Are you sure?",  "Start Calibration");
 			dialog.Commands.Add(new UICommand("Yes"));
 			dialog.Commands.Add(new UICommand("No"));
 			dialog.DefaultCommandIndex = 1; // Set the command that will be invoked by default

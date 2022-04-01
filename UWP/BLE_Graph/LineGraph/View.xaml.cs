@@ -94,18 +94,18 @@ namespace LineGraph
 							await configChr.RefeshValueFromSource(null);
 						}
 					}
-				}
 
-				// Get current stack panel, find button and set it invisible
-				var myStackpanel = (StackPanel)textBox.Parent;
-				foreach (object child in myStackpanel.Children) {
-					string childname = null;
-					if (child is FrameworkElement) {
-						childname = (child as FrameworkElement).Name;
-						if (childname == "Btn_Apply") {
-							var btn = (Button)child;
-							btn.Visibility = Visibility.Collapsed;
-							break;
+					// Get current stack panel, find button and set it invisible
+					var myStackpanel = (StackPanel)textBox.Parent;
+					foreach (object child in myStackpanel.Children) {
+						string childname = null;
+						if (child is FrameworkElement) {
+							childname = (child as FrameworkElement).Name;
+							if (childname == "Btn_Apply") {
+								var btn = (Button)child;
+								btn.Visibility = Visibility.Collapsed;
+								break;
+							}
 						}
 					}
 				}
@@ -139,6 +139,8 @@ namespace LineGraph
 			var btn = (Button)sender;
 			var myStackpanel = (StackPanel)btn.Parent;
 
+			Debug.WriteLine("Btn_Apply_Click");
+
 			// Get corresponding textbox, its value/source (via Tag) and set config accordingly
 			foreach (object child in myStackpanel.Children) {
 				string childname = null;
@@ -146,6 +148,8 @@ namespace LineGraph
 					childname = (child as FrameworkElement).Name;
 					if (childname == "Tbx_Value") {
 						var textBox = (TextBox)child;
+						Debug.WriteLine("Btn_Apply_Click: Found " + textBox.Name);
+
 						// Get the corresponding ConfigCharacteristic object (The ObjIdx of the ConfigCharacteristic is bound to the Tag of th textbox)
 						ConfigCharacteristic ConfigChr = ViewModel.ConfigCharacteristics[(int)textBox.Tag];
 
@@ -157,15 +161,31 @@ namespace LineGraph
 					}
 				}
 			}
+
+			// Button did what he had to do - hide it
+			btn.Visibility = Visibility.Collapsed;
 		}
 
 		private async Task SetConfigCharacteristic(ConfigCharacteristic ConfigChr, string ValueString) {
 			// Try to parse and write back value
-			string result = await ConfigChr.WriteConfigToSource(ValueString);
+			string result;
+			bool res_error = false;
+			try {
+				result = await ConfigChr.WriteConfigToSource(ValueString);
+			}
+			catch {
+				result = "Error writing configuration characteristic";
+			}
 
 			// Signal user if anything went wrong
-			if (result != null) {
+			if (result != null && res_error == false) {
 				rootPage.NotifyUser("Set Configuration: " + result, NotifyType.ErrorMessage);
+			}
+			else if(result != null && res_error == true){
+				rootPage.NotifyUser("Set Configuration: " + result, NotifyType.ErrorMessage);
+			}
+			else {
+				//rootPage.NotifyUser("Set Configuration: OK", NotifyType.ErrorMessage);
 			}
 		}
 

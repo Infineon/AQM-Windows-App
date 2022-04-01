@@ -55,7 +55,8 @@
 							<RowDefinition Height="auto"></RowDefinition>
 						</Grid.RowDefinitions>
 						<ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto" Grid.Row="0">
-							<StackPanel Orientation="Vertical">
+							<StackPanel Orientation="Vertical" Margin="0,10,0,0">
+								<TextBlock x:Name="ConfigureSystemHeader" Text="Configure Parameters:" TextWrapping="Wrap" FontSize="15" FontWeight="Bold" Margin="20,10,0,0" TextAlignment="Center" Visibility="Visible"/>
 								<ListView x:Name="ConfigListView" 
                                   ItemTemplate="{StaticResource ConfigListViewTemplate}"
                                   ItemsSource="{x:Bind ViewModel.ConfigCharacteristics, Mode=OneWay}"
