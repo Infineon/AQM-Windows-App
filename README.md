@@ -72,16 +72,18 @@ This project aims to implement a GUI to monitor and configure [PAS CO2 SensorNet
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The application is developed as an UWP App in [Visual Studio 2019 Community](https://visualstudio.microsoft.com/de/downloads/). 
+The application is developed as a UWP App in [Visual Studio 2019 Community](https://visualstudio.microsoft.com/de/downloads/). 
 
-In order to execute it you need to download and extract the file into a directory. Then open the "BLE Graph.sln" file in Visual Studio and start it with F5.
+In order to execute it, you need to download and extract the file into a directory. Then open the "BLE Graph.sln" file in Visual Studio and start it with F5. In some cases, it is necessary to right-click the project and use "Clean" and "Rebuild". Also, in rare cases you need to reset/create a new certificate (double click "Package.appxmanifest" -> Packaging -> Publisher -> Choose Certificate -> Create -> OK).
 
-Note: This app can only be run with Windows 10 1809 or newer. This is because some of the used .Net Core Features are limited to newer Versions of Windows.
+Make sure your bluetooth device (USB Dongle or intergated device) is installed correctly. Also sometimes it is necessary to allow "[Communication with unpaired devices](https://stackoverflow.com/questions/62284426/uwp-bluetoothdevice-fromidasync-returns-null)" in the Windows Settings (Settings -> Privacy Settings -> Other Devices).
+
+Note: This app can only be run with Windows 10 1809 or newer. This is because some used .Net Core Features are limited to newer Versions of Windows.
 
 <!-- USAGE -->
 ## Usage
 
-On the left you can filter and click on one of the Sensor Boards to establish a connection to it. After that you can click on one of the values above to get the graph on this value or use the boxes on the right to configure it. The menu and configuration buttons on top left and right corner can be used to hide the according panels.
+On the left, you can filter and click on one of the Sensor Boards to establish a connection to it. After that, you can click on one of the values above to get the graph on this value or use the boxes on the right to configure it. The menu and configuration buttons on the top left and right corner can be used to hide the according panels.
 
 <a href="https://github.com/Infineon/AQM-Windows-App">
     <img src="images/App.png" alt="Application example" >
